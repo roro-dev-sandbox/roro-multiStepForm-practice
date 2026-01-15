@@ -16,11 +16,10 @@ const StepIndicatorItem = ({
             className={`flex items-center gap-4 ${onClick ? "cursor-pointer" : ""}`}
             onClick={onClick}
         >
-            {/* Círculo del número */}
             <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center font-bold border-2 transition-all duration-300 ${isActive
-                        ? "bg-blue-300 text-blue-950 border-blue-300"
-                        : "bg-transparent text-white border-white hover:border-blue-300"
+                className={`px-3 py-1 rounded-full font-bold border ${isActive
+                        ? "bg-blue-200 text-blue-950 border-blue-200"
+                        : "bg-transparent text-white border-white"
                     }`}
             >
                 {step}
@@ -28,7 +27,7 @@ const StepIndicatorItem = ({
 
             {/* Texto del step (oculto en móvil) */}
             <div className="hidden md:block">
-                <p className="text-blue-200 text-xs font-normal uppercase tracking-wide">
+                <p className="text-grey-500 text-xs uppercase tracking-wide">
                     STEP {step}
                 </p>
                 <p className="text-white font-bold text-sm uppercase tracking-wide">

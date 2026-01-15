@@ -1,5 +1,6 @@
 import { useFormContext } from "react-hook-form";
 import type { FormSchemaInput, FormSchemaOutput } from "../schemas/formSchema";
+import { Button } from "@/components/ui/Button";
 
 interface StepButtonProps {
     currentStep: number;
@@ -54,16 +55,15 @@ export function StepButton({
     };
 
     return (
-        <div>
-            StepButton
+        <div className="flex justify-between">
             {!isFirstStep && (
-                <button type="button" onClick={handleBack}>
+                <Button type="button" variant="secondary" onClick={handleBack}>
                     Go Back
-                </button>
+                </Button>
             )}
-            <button type="button" onClick={handleNext}>
+            <Button type="button"  onClick={handleNext}>
                 {isLastStep ? "Confirm" : "Next Step"}
-            </button>
+            </Button>
         </div>
     );
 }

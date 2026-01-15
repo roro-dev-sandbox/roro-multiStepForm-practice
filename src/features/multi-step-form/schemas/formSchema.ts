@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const personalInfoSchema = z.object({
-    name: z.string().min(1, "Name is required"),
+    name: z.string().min(3, "Name is required"),
     email: z.string().email("Invalid email address"),
     phone: z.string().min(10, "Phone number must be at least 10 digits"),
 });
@@ -16,9 +16,9 @@ export const addOnsSchema = z.object({
 });
 
 export const formSchema = z.object({
-    name: z.string().min(1, "Name is required"),
-    email: z.string().email("Invalid email address"),
-    phone: z.string().min(10, "Phone number must be at least 10 digits"),
+    name: z.string().trim().min(3, "Name is required"),
+    email: z.string().email("Invalid email address").trim(),
+    phone: z.string().trim().min(10, "Phone number must be at least 10 digits"),
     plan: z.enum(["arcade", "advanced", "pro"]),
     billing: z.enum(["monthly", "yearly"]),
     addOns: z.array(z.string()),
