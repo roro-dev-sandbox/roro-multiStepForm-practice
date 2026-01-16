@@ -33,7 +33,7 @@ export const MultiStepForm = () => {
     <FormProvider {...form}>
       <div className="bg-white w-full max-w-210 fixed top-1/2 left-1/2 -translate-1/2 flex py-3 pl-3 rounded-xl shadow-md">
         <StepIndicator currentStep={currentStep} />
-        <div className="mx-auto py-6 flex flex-col justify-between">
+        <div className="py-6 md:px-18 w-full flex flex-col justify-between">
           <FormField currentStep={currentStep} />
           <StepButton
             currentStep={currentStep}
