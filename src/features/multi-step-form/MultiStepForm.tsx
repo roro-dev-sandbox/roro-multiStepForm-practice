@@ -31,16 +31,20 @@ export const MultiStepForm = () => {
 
   return (
     <FormProvider {...form}>
-      <StepIndicator currentStep={currentStep} />
-      <FormField />
-      <StepButton
-        currentStep={currentStep}
-        nextStep={nextStep}
-        prevStep={prevStep}
-        isFirstStep={isFirstStep}
-        isLastStep={isLastStep}
-        onSubmit={onSubmit}
-      />
+      <div className="bg-white w-full max-w-210 fixed top-1/2 left-1/2 -translate-1/2 flex py-3 pl-3 rounded-xl shadow-md">
+        <StepIndicator currentStep={currentStep} />
+        <div className="mx-auto py-6 flex flex-col justify-between">
+          <FormField currentStep={currentStep} />
+          <StepButton
+            currentStep={currentStep}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            isFirstStep={isFirstStep}
+            isLastStep={isLastStep}
+            onSubmit={onSubmit}
+          />
+        </div>
+      </div>
     </FormProvider>
   );
 };

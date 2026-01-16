@@ -1,5 +1,7 @@
 import { type FormStep } from "../types/form.types";
 import StepIndicatorItem from "./StepIndicatorItem";
+import imgSidebarMobile from "../../../assets/images/bg-sidebar-mobile.svg";
+import imgSidebarDesktop from "../../../assets/images/bg-sidebar-desktop.svg";
 
 interface StepIndicatorProps {
     currentStep: FormStep;
@@ -18,8 +20,10 @@ export function StepIndicator({
     onStepClick,
 }: StepIndicatorProps) {
     return (
-        <aside className="rounded-xl bg-[url(/assets/images/bg-sidebar-mobile.svg)] md:bg-[url(/assets/images/bg-sidebar-desktop.svg)] bg-no-repeat bg-cover bg-blue-950 p-6 md:p-10 w-full md:w-64 lg:w-80">
-            <nav className="space-y-6" aria-label="Form progress">
+        <aside className="relative inset-0 rounded-xl w-full max-w-60">
+            <img className="block md:hidden" src={imgSidebarMobile} alt="Sidebar Mobile Background" />
+            <img className="hidden md:block" src={imgSidebarDesktop} alt="Sidebar Desktop Background" />
+            <nav className="absolute inset-0 space-y-6 p-6" aria-label="Form progress">
                 {STEPS.map(({ step, title }) => (
                     <StepIndicatorItem
                         key={step}

@@ -55,7 +55,7 @@ export function StepButton({
     };
 
     return (
-        <div className="flex justify-between">
+        <div className={`flex ${!isFirstStep ? "justify-between" : "justify-end"}`}>
             {!isFirstStep && (
                 <Button type="button" variant="secondary" onClick={handleBack}>
                     Go Back
