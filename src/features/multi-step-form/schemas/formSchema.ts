@@ -16,9 +16,9 @@ export const addOnsSchema = z.object({
 });
 
 export const formSchema = z.object({
-    name: z.string().trim().min(3, "Name is required"),
+    name: z.string().trim().min(1, "Name is required").min(3, "Name must be at least 3 characters"),
     email: z.string().email("Invalid email address").trim(),
-    phone: z.string().trim().min(10, "Phone number must be at least 10 digits"),
+    phone: z.string().trim().min(1, "Phone number is required").min(10, "Phone number must be at least 10 digits"),
     plan: z.enum(["arcade", "advanced", "pro"]),
     billing: z.enum(["monthly", "yearly"]),
     addOns: z.array(z.string()),
