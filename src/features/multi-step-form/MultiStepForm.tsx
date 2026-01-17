@@ -17,7 +17,7 @@ export const MultiStepForm = () => {
       name: "",
       email: "",
       phone: "",
-      plan: "advanced",
+      plan: "arcade",
       billing: "monthly",
       addOns: [],
     },

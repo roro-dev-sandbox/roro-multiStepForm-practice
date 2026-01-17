@@ -7,18 +7,12 @@ export interface PersonalInfo {
     phone: string;
 }
 
-export interface Plan {
+export interface PlanOption {
     id: string;
+    img: string;
     name: string;
-    price: number;
-    billing: "monthly" | "yearly";
-}
-
-export interface AddOn {
-    id: string;
-    name: string;
-    description: string;
-    price: number;
+    priceMonthly: number;
+    priceYearly: number;
 }
 
 export interface FormData {
