@@ -13,7 +13,7 @@ const StepIndicatorItem = ({
 }: StepIndicatorItemProps) => {
     return (
         <div
-            className={`flex items-center gap-4 ${onClick ? "cursor-pointer" : ""}`}
+            className={`flex sm:flex-row items-center gap-4 h-max ${onClick ? "cursor-pointer" : ""}`}
             onClick={onClick}
         >
             <div
@@ -24,9 +24,7 @@ const StepIndicatorItem = ({
             >
                 {step}
             </div>
-
-            {/* Texto del step (oculto en móvil) */}
-            <div className="hidden md:block">
+            <div className="hidden sm:block">
                 <p className="text-grey-500 text-xs uppercase tracking-wide">
                     STEP {step}
                 </p>
