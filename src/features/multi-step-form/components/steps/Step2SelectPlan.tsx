@@ -8,7 +8,7 @@ import iconAdvanced from "@/assets/images/icon-advanced.svg";
 import iconPro from "@/assets/images/icon-pro.svg";
 import type { PlanOption } from "../../types/form.types";
 import { Step2SelectPlanItem } from "./Step2SelectPlanItem";
-import { ControllerInputRadio } from "@/components/ui/form/ControllerInputRadio";
+import { Step2SelectPlanBilling } from "./Step2SelectPlanBilling";
 
 const PlanOptions: PlanOption[] = [
     {
@@ -40,43 +40,27 @@ export function Step2SelectPlan() {
         control,
         name: ["billing", "plan"],
     });
+    const isYearly = billing === "yearly";
 
     return (
-        <div>
+        <div className="space-y-6">
             <h1 className="text-blue-950 font-bold text-2xl mb-1">
                 Select Your Plan
             </h1>
             <p className="text-grey-500">
                 You have the option of monthly or yearly billing.
             </p>
-            <div className="flex justify-between gap-4 mt-6">
+            <div className="flex flex-col sm:flex-row justify-between gap-4 ">
                 {PlanOptions.map((plan) => (
                     <Step2SelectPlanItem
                         key={plan.id}
-                        isYearly={billing === "yearly"}
+                        isYearly={isYearly}
                         isSelected={planCurrently === plan.name.toLowerCase()}
                         {...plan}
                     />
                 ))}
             </div>
-            <div className="flex justify-center items-center gap-6 mt-6 p-2 bg-gray-100 rounded-md">
-                <label htmlFor="monthly">Monthly</label>
-                <div className="flex bg-blue-950 rounded-full p-1 ">
-                    <ControllerInputRadio
-                        control={control}
-                        name="billing"
-                        value="monthly"
-                        className={`size-4 rounded-full cursor-pointer ${billing === 'monthly' ? 'bg-white' : 'bg-blue-950'}`}
-                    />
-                    <ControllerInputRadio
-                        control={control}
-                        name="billing"
-                        value="yearly"
-                        className={`size-4 rounded-full cursor-pointer ${billing === 'yearly' ? 'bg-white' : 'bg-blue-950'}`}
-                    />
-                </div>
-                <label htmlFor="yearly">Yearly</label>
-            </div>
+            <Step2SelectPlanBilling billing={billing} isYearly={isYearly} />
         </div>
     );
 }

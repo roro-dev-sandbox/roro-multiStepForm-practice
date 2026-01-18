@@ -56,7 +56,7 @@ export function StepButton({
 
     return (
         <div
-            className={`w-full fixed bottom-0 left-0 sm:static p-4 sm:p-0 flex items-center ${!isFirstStep ? "justify-between" : "justify-end"}`}
+            className={`bg-white w-full fixed bottom-0 left-0 sm:static p-4 sm:p-0 flex items-center ${!isFirstStep ? "justify-between" : "justify-end"}`}
         >
             {!isFirstStep && (
                 <Button type="button" variant="secondary" onClick={handleBack}>
