@@ -20,10 +20,10 @@ export function StepIndicator({
     onStepClick,
 }: StepIndicatorProps) {
     return (
-        <aside className="relative inset-0 rounded-xl w-full max-w-60">
-            <img className="block md:hidden" src={imgSidebarMobile} alt="Sidebar Mobile Background" />
-            <img className="hidden md:block" src={imgSidebarDesktop} alt="Sidebar Desktop Background" />
-            <nav className="absolute inset-0 space-y-6 p-6" aria-label="Form progress">
+        <aside className="fixed inset-0 sm:relative w-full sm:max-w-60 rounded-xl -z-10 sm:z-0">
+            <img className="block sm:hidden w-full" src={imgSidebarMobile} alt="Sidebar Mobile Background" />
+            <img className="hidden sm:block" src={imgSidebarDesktop} alt="Sidebar Desktop Background" />
+            <nav className="absolute inset-0 sm:block space-y-6 p-6 flex justify-center gap-2" aria-label="Form progress">
                 {STEPS.map(({ step, title }) => (
                     <StepIndicatorItem
                         key={step}

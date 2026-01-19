@@ -30,13 +30,13 @@ export function StepButton({
 
         switch (currentStep) {
             case 1:
-                isValid = await trigger(["name", "email", "phone"]);
+                isValid = await trigger(["personal.name", "personal.email", "personal.phone"]);
                 break;
             case 2:
-                isValid = await trigger(["plan", "billing"]);
+                isValid = await trigger(["planId", "billing"]);
                 break;
             case 3:
-                isValid = await trigger(["addOns"]);
+                isValid = await trigger(["addOnIds"]);
                 break;
             case 4:
                 handleSubmit(onSubmit)();
@@ -55,13 +55,15 @@ export function StepButton({
     };
 
     return (
-        <div className={`flex ${!isFirstStep ? "justify-between" : "justify-end"}`}>
+        <div
+            className={`bg-white w-full fixed bottom-0 left-0 sm:static p-4 sm:p-0 flex items-center ${!isFirstStep ? "justify-between" : "justify-end"}`}
+        >
             {!isFirstStep && (
                 <Button type="button" variant="secondary" onClick={handleBack}>
                     Go Back
                 </Button>
             )}
-            <Button type="button"  onClick={handleNext}>
+            <Button type="button" onClick={handleNext}>
                 {isLastStep ? "Confirm" : "Next Step"}
             </Button>
         </div>

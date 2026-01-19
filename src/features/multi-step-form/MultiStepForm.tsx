@@ -9,21 +9,16 @@ import { FormField } from "./components/FormField";
 import { useFormSteps } from "./hooks/useFormSteps";
 import { StepIndicator } from "./components/StepIndicator";
 import { StepButton } from "./components/StepButton";
+import { formInitialState } from "./types/form.types";
 
 export const MultiStepForm = () => {
   const form = useForm<FormSchemaInput, any, FormSchemaOutput>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      plan: "advanced",
-      billing: "monthly",
-      addOns: [],
-    },
+    defaultValues: formInitialState,
     mode: "onChange",
   });
-  const { currentStep, nextStep, prevStep, isFirstStep, isLastStep } = useFormSteps();
+  const { currentStep, nextStep, prevStep, isFirstStep, isLastStep } =
+    useFormSteps();
 
   const onSubmit = (data: FormSchemaOutput) => {
     console.log("Form submitted:", data);
@@ -31,9 +26,9 @@ export const MultiStepForm = () => {
 
   return (
     <FormProvider {...form}>
-      <div className="bg-white w-full max-w-210 fixed top-1/2 left-1/2 -translate-1/2 flex py-3 pl-3 rounded-xl shadow-md">
+      <div className="bg-transparent sm:bg-white w-full h-max max-w-210 absolute top-24 sm:m-auto sm:inset-0 flex p-3 sm:pr-0 rounded-xl">
         <StepIndicator currentStep={currentStep} />
-        <div className="mx-auto py-6 flex flex-col justify-between">
+        <div className="bg-white w-full flex flex-col justify-between p-5 sm:py-6 sm:px-5 md:px-16 rounded-xl">
           <FormField currentStep={currentStep} />
           <StepButton
             currentStep={currentStep}

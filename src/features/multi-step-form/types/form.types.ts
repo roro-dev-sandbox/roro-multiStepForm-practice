@@ -1,40 +1,65 @@
 import { type Control, type UseFormReturn } from "react-hook-form";
 import type { FormSchemaInput, FormSchemaOutput } from "../schemas/formSchema";
 
+export type Billing = "monthly" | "yearly";
+export type PlanId = "arcade" | "advanced" | "pro";
+
+export interface PriceCents {
+    monthly: number;
+    yearly: number;
+}
+
 export interface PersonalInfo {
     name: string;
     email: string;
     phone: string;
 }
 
-export interface Plan {
-    id: string;
+export interface PlanOption {
+    id: PlanId;
     name: string;
-    price: number;
-    billing: "monthly" | "yearly";
+    img?: string;
+    priceCents: PriceCents;
+    description?: string;
 }
 
 export interface AddOn {
     id: string;
     name: string;
-    description: string;
-    price: number;
+    description?: string;
+    priceCents: PriceCents;
 }
 
-export interface FormData {
+export interface FormState {
     // Step 1
-    name: string;
-    email: string;
-    phone: string;
+    personal: PersonalInfo;
 
     // Step 2
-    plan: "arcade" | "advanced" | "pro";
-    billing: "monthly" | "yearly";
+    planId: PlanId;
+    billing: Billing;
 
     // Step 3
-    addOns: string[];
+    addOnIds: string[];
+
+    // opcional: snapshot al enviar el formulario
+    // summarySnapshot?: {
+    //   planPriceCents: number;
+    //   addOnsPriceCents: number;
+    //   totalCents: number;
+    // }
 }
 
 export type FormStep = 1 | 2 | 3 | 4;
 export type FormType = UseFormReturn<FormSchemaInput, any, FormSchemaOutput>;
 export type FormControl = Control<FormSchemaInput, any, FormSchemaOutput>;
+
+export const formInitialState: FormState = {
+    personal: {
+        name: "",
+        email: "",
+        phone: "",
+    },
+    planId: "arcade",
+    billing: "monthly",
+    addOnIds: [],
+};

@@ -21,5 +21,5 @@ interface FormFieldProps {
 
 export function FormField({ currentStep }: FormFieldProps) {
   const StepComponent = STEPS[currentStep];
-  return <StepComponent />;
+  return (<StepComponent />);
 }
