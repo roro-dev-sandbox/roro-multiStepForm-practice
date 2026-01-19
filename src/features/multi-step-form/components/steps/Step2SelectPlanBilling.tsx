@@ -1,11 +1,9 @@
 import { useFormContext } from "react-hook-form";
-import type {
-    FormSchemaInput,
-    FormSchemaOutput,
-} from "../../schemas/formSchema";
+import type { FormSchemaInput, FormSchemaOutput } from "../../schemas/formSchema";
+import type { Billing } from "../../types/form.types";
 
 interface Step2SelectPlanBillingProps {
-    billing: "monthly" | "yearly";
+    billing: Billing;
     isYearly: boolean;
 }
 

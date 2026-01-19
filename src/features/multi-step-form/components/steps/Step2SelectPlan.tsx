@@ -1,36 +1,34 @@
 import { useFormContext, useWatch } from "react-hook-form";
-import type {
-    FormSchemaInput,
-    FormSchemaOutput,
-} from "../../schemas/formSchema";
+import type { FormSchemaInput, FormSchemaOutput } from "../../schemas/formSchema";
 import iconArcade from "@/assets/images/icon-arcade.svg";
 import iconAdvanced from "@/assets/images/icon-advanced.svg";
 import iconPro from "@/assets/images/icon-pro.svg";
 import type { PlanOption } from "../../types/form.types";
 import { Step2SelectPlanItem } from "./Step2SelectPlanItem";
 import { Step2SelectPlanBilling } from "./Step2SelectPlanBilling";
+import { StepHeader } from "../StepHeader";
 
-const PlanOptions: PlanOption[] = [
+export const PLANS: PlanOption[] = [
     {
-        id: "1-arcade",
-        img: iconArcade,
+        id: "arcade",
         name: "Arcade",
-        priceMonthly: 9,
-        priceYearly: 90,
+        priceCents: { monthly: 9, yearly: 90 },
+        img: iconArcade,
+        description: "2 months free",
     },
     {
-        id: "2-advanced",
-        img: iconAdvanced,
+        id: "advanced",
         name: "Advanced",
-        priceMonthly: 12,
-        priceYearly: 120,
+        priceCents: { monthly: 12, yearly: 120 },
+        img: iconAdvanced,
+        description: "2 months free",
     },
     {
-        id: "3-pro",
-        img: iconPro,
+        id: "pro",
         name: "Pro",
-        priceMonthly: 15,
-        priceYearly: 150,
+        priceCents: { monthly: 15, yearly: 150 },
+        img: iconPro,
+        description: "2 months free",
     },
 ];
 
@@ -38,24 +36,22 @@ export function Step2SelectPlan() {
     const { control } = useFormContext<FormSchemaInput, any, FormSchemaOutput>();
     const [billing, planCurrently] = useWatch({
         control,
-        name: ["billing", "plan"],
+        name: ["billing", "planId"],
     });
     const isYearly = billing === "yearly";
 
     return (
         <div className="space-y-6">
-            <h1 className="text-blue-950 font-bold text-2xl mb-1">
-                Select Your Plan
-            </h1>
-            <p className="text-grey-500">
-                You have the option of monthly or yearly billing.
-            </p>
+            <StepHeader
+                title="Select Your Plan"
+                description="You have the option of monthly or yearly billing."
+            />
             <div className="flex flex-col sm:flex-row justify-between gap-4 ">
-                {PlanOptions.map((plan) => (
+                {PLANS.map((plan) => (
                     <Step2SelectPlanItem
                         key={plan.id}
-                        isYearly={isYearly}
-                        isSelected={planCurrently === plan.name.toLowerCase()}
+                        billing={billing}
+                        isSelected={planCurrently === plan.id}
                         {...plan}
                     />
                 ))}

@@ -30,13 +30,13 @@ export function StepButton({
 
         switch (currentStep) {
             case 1:
-                isValid = await trigger(["name", "email", "phone"]);
+                isValid = await trigger(["personal.name", "personal.email", "personal.phone"]);
                 break;
             case 2:
-                isValid = await trigger(["plan", "billing"]);
+                isValid = await trigger(["planId", "billing"]);
                 break;
             case 3:
-                isValid = await trigger(["addOns"]);
+                isValid = await trigger(["addOnIds"]);
                 break;
             case 4:
                 handleSubmit(onSubmit)();

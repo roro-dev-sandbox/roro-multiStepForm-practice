@@ -2,7 +2,7 @@ import { useControllerField, type BaseControllerProps } from "@/hooks/useControl
 import type { ComponentProps } from "react";
 import type { FieldValues } from "react-hook-form";
 
-type InputType = ComponentProps<"input">["type"];
+export type InputType = ComponentProps<"input">["type"];
 
 export interface ControllerInputProps<T extends FieldValues, TT,> extends BaseControllerProps<T, TT> {
     type?: InputType;
@@ -19,7 +19,7 @@ export function ControllerInput<T extends FieldValues, TT>({
     required = false,
     className,
 }: ControllerInputProps<T, TT>) {
-    const { field, error, hasError, colorState } = useControllerField(
+    const { field, error, hasError } = useControllerField(
         name,
         control,
     );

@@ -9,18 +9,12 @@ import { FormField } from "./components/FormField";
 import { useFormSteps } from "./hooks/useFormSteps";
 import { StepIndicator } from "./components/StepIndicator";
 import { StepButton } from "./components/StepButton";
+import { formInitialState } from "./types/form.types";
 
 export const MultiStepForm = () => {
   const form = useForm<FormSchemaInput, any, FormSchemaOutput>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      plan: "arcade",
-      billing: "monthly",
-      addOns: [],
-    },
+    defaultValues: formInitialState,
     mode: "onChange",
   });
   const { currentStep, nextStep, prevStep, isFirstStep, isLastStep } =
