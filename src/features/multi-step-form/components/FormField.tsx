@@ -12,7 +12,7 @@ const STEPS: StepType = {
   1: Step1PersonalInfo,
   2: Step2SelectPlan,
   3: Step3AddOns,
-  4: Step4Summary
+  4: Step4Summary,
 };
 
 interface FormFieldProps {

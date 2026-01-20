@@ -27,7 +27,7 @@ export function Step3AddOnsItem({
             control={control}
             name={`addOnIds`}
             value={id}
-            classNameLabel={`flex items-center px-5 py-3 gap-5 cursor-pointer border border-gray-200 rounded-lg hover:border-purple-600 hover:bg-gray-50 transition-colors ${isChecked ? "border-purple-600 bg-gray-50" : ""}`}
+            classNameLabel={`flex items-center px-5 py-3 gap-5 cursor-pointer border border-gray-300 rounded-lg hover:border-purple-600 hover:bg-gray-100 transition-colors ${isChecked ? "border-purple-600 bg-gray-50" : ""}`}
             classNameInput="order-1 appearance-none w-5 h-5 border border-gray-300 rounded-md checked:border-purple-600 checked:bg-purple-600 cursor-pointer"
             type="checkbox"
             isArray
