@@ -5,8 +5,6 @@ import { Step2SelectPlanBilling } from "./Step2SelectPlanBilling";
 import { StepHeader } from "../StepHeader";
 import { PLANS } from "../../constants/valuesSteps";
 
-
-
 export function Step2SelectPlan() {
     const { control } = useFormContext<FormSchemaInput, any, FormSchemaOutput>();
     const [billing, planCurrently] = useWatch({

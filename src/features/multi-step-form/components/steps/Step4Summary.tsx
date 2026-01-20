@@ -1,9 +1,6 @@
 import { useFormContext, useWatch } from "react-hook-form";
 import { StepHeader } from "../StepHeader";
-import type {
-    FormSchemaInput,
-    FormSchemaOutput,
-} from "../../schemas/formSchema";
+import type { FormSchemaInput, FormSchemaOutput } from "../../schemas/formSchema";
 import {
     calculateTotalPrice,
     findAddOns,
@@ -11,12 +8,13 @@ import {
     firstWordUpperCase,
 } from "../../helpers/formCalculationStep";
 import { ADDONS, DATE_VALUE, PLANS } from "../../constants/valuesSteps";
+import type { FormStep } from "../../types/form.types";
 
 export interface Step4SummaryProps {
-    prop: string;
+    onStepClick?: (step: FormStep) => void;
 }
 
-export function Step4Summary() {
+export function Step4Summary({ onStepClick }: Step4SummaryProps) {
     const { control } = useFormContext<FormSchemaInput, any, FormSchemaOutput>();
     const [planId, addOnIds, billing] = useWatch({
         control,
@@ -38,9 +36,9 @@ export function Step4Summary() {
                         <h2 className="text-blue-950 font-medium">
                             {plan?.name}({firstWordUpperCase(billing)})
                         </h2>
-                        <a className="underline text-grey-500" href="#">
+                        <button className="underline text-grey-500 cursor-pointer" onClick={() => onStepClick?.(2)}>
                             change
-                        </a>
+                        </button>
                     </div>
                     <p className="text-blue-950 font-medium">
                         ${plan?.priceCents[billing]}/{DATE_VALUE[billing]}
