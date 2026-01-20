@@ -1,4 +1,4 @@
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 import type { AddOn } from "../../types/form.types";
 import { StepHeader } from "../StepHeader";
 import { Step3AddOnsItem } from "./Step3AddOnsItem";
@@ -26,12 +26,8 @@ export const ADDONS: AddOn[] = [
 ];
 
 export function Step3AddOns() {
-    const { watch } = useFormContext<FormSchemaInput, any, FormSchemaOutput>();
-    const addOnIds = watch("addOnIds");
-    console.log("Selected Add-Ons IDs:", addOnIds);
-
-
-
+    const { control} = useFormContext<FormSchemaInput, any, FormSchemaOutput>();
+    const [addOnIds, billing] = useWatch({ control, name: ["addOnIds", "billing"] });
 
     return (
         <div className="space-y-6">
@@ -39,9 +35,9 @@ export function Step3AddOns() {
                 title="Pick Add-ons"
                 description="Add-ons help enhance your gaming experience."
             />
-            <div>
+            <div className="space-y-4">
                 {ADDONS.map((addon) => (
-                    <Step3AddOnsItem key={addon.id} {...addon} />
+                    <Step3AddOnsItem key={addon.id} addOnIds={addOnIds} {...addon} billing={billing} />
                 ))}
             </div>
         </div>
