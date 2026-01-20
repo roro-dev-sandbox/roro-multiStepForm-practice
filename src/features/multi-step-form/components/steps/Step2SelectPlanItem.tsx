@@ -2,12 +2,7 @@ import type { Billing, PlanOption } from "../../types/form.types";
 import type { FormSchemaInput, FormSchemaOutput } from "../../schemas/formSchema";
 import { useFormContext } from "react-hook-form";
 import { ControllerInputCustom } from "@/components/ui/form/ControllerInputCustom";
-
-const DATE_VALUE: { [key: string]: string } = {
-    monthly: "mo",
-    yearly: "yr",
-};
-
+import { DATE_VALUE } from "../../constants/valuesSteps";
 
 interface Step2SelectPlanItemProps extends PlanOption {
     billing: Billing;

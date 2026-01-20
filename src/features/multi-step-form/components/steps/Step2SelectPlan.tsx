@@ -1,36 +1,11 @@
 import { useFormContext, useWatch } from "react-hook-form";
 import type { FormSchemaInput, FormSchemaOutput } from "../../schemas/formSchema";
-import iconArcade from "@/assets/images/icon-arcade.svg";
-import iconAdvanced from "@/assets/images/icon-advanced.svg";
-import iconPro from "@/assets/images/icon-pro.svg";
-import type { PlanOption } from "../../types/form.types";
 import { Step2SelectPlanItem } from "./Step2SelectPlanItem";
 import { Step2SelectPlanBilling } from "./Step2SelectPlanBilling";
 import { StepHeader } from "../StepHeader";
+import { PLANS } from "../../constants/valuesSteps";
 
-export const PLANS: PlanOption[] = [
-    {
-        id: "arcade",
-        name: "Arcade",
-        priceCents: { monthly: 9, yearly: 90 },
-        img: iconArcade,
-        description: "2 months free",
-    },
-    {
-        id: "advanced",
-        name: "Advanced",
-        priceCents: { monthly: 12, yearly: 120 },
-        img: iconAdvanced,
-        description: "2 months free",
-    },
-    {
-        id: "pro",
-        name: "Pro",
-        priceCents: { monthly: 15, yearly: 150 },
-        img: iconPro,
-        description: "2 months free",
-    },
-];
+
 
 export function Step2SelectPlan() {
     const { control } = useFormContext<FormSchemaInput, any, FormSchemaOutput>();

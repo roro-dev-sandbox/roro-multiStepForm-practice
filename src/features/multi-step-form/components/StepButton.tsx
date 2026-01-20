@@ -19,11 +19,7 @@ export function StepButton({
     isLastStep,
     onSubmit,
 }: StepButtonProps) {
-    const { handleSubmit, trigger } = useFormContext<
-        FormSchemaInput,
-        any,
-        FormSchemaOutput
-    >();
+    const { handleSubmit, trigger } = useFormContext<FormSchemaInput, any, FormSchemaOutput>();
 
     const handleNext = async () => {
         let isValid = false;
