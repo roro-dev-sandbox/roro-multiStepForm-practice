@@ -3,6 +3,9 @@ import type { AddOn, Billing, PlanId, PlanOption } from "../types/form.types";
 export const firstWordUpperCase = (str: string) =>
     str[0].toUpperCase() + str.slice(1);
 
+export const transformAdverbToNoun = (str: string) => str.replace(/ly$/, "");
+
+
 export const findPlan = (plans: PlanOption[], id: PlanId) =>
     plans.find((p) => p.id === id) ?? null;
 
