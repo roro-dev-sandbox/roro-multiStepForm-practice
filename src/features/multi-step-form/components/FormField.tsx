@@ -5,7 +5,7 @@ import { Step3AddOns } from "./steps/Step3AddOns";
 import { Step4Summary } from "./steps/Step4Summary";
 
 type StepType = {
-  [key in FormStep]: React.ComponentType;
+  [key in FormStep]: React.ComponentType<{ onStepClick?: (step: FormStep) => void }>;
 };
 
 const STEPS: StepType = {
@@ -17,9 +17,10 @@ const STEPS: StepType = {
 
 interface FormFieldProps {
   currentStep: FormStep;
+  onStepClick?: (step: FormStep) => void;
 }
 
-export function FormField({ currentStep }: FormFieldProps) {
+export function FormField({ currentStep, onStepClick }: FormFieldProps) {
   const StepComponent = STEPS[currentStep];
-  return (<StepComponent />);
+  return (<StepComponent onStepClick={onStepClick} />);
 }
