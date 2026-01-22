@@ -1,7 +1,9 @@
-import { useControllerField, type BaseControllerProps } from "@/hooks/useControllerField";
+import {
+    useControllerField,
+    type BaseControllerProps,
+} from "@/hooks/useControllerField";
 import type { FieldValues } from "react-hook-form";
 import type { InputType } from "./ControllerInput";
-
 
 export interface ControllerInputCustomProps<
     T extends FieldValues,
@@ -13,6 +15,7 @@ export interface ControllerInputCustomProps<
     classNameLabel?: string;
     classNameInput?: string;
     isArray?: boolean;
+    iconCheckbox?: string;
 }
 
 export function ControllerInputCustom<T extends FieldValues, TT>({
@@ -24,9 +27,10 @@ export function ControllerInputCustom<T extends FieldValues, TT>({
     value,
     type = "radio",
     isArray = false,
+    iconCheckbox,
 }: ControllerInputCustomProps<T, TT>) {
     const { field } = useControllerField(name, control);
-    
+
     const handleChange = () => {
         if (!isArray) return field.onChange(value);
         const newValue = field.value.includes(value)
@@ -38,15 +42,22 @@ export function ControllerInputCustom<T extends FieldValues, TT>({
     return (
         <label htmlFor={value} className={classNameLabel}>
             {children}
-            <input
-                {...field}
-                id={value}
-                type={type}
-                value={value}
-                className={classNameInput}
-                onChange={handleChange}
-                checked={isArray ? field.value.includes(value) : field.value === value}
-            />
+            <div className="h-5 relative">
+                <input
+                    {...field}
+                    id={value}
+                    type={type}
+                    value={value}
+                    className={classNameInput}
+                    onChange={handleChange}
+                    checked={
+                        isArray ? field.value.includes(value) : field.value === value
+                    }
+                />
+                {iconCheckbox && type === "checkbox" && (
+                    <img className=" absolute inset-0 m-auto  hidden peer-checked:block" src={iconCheckbox} alt="checkbox icon" />
+                )}
+            </div>
         </label>
     );
 }

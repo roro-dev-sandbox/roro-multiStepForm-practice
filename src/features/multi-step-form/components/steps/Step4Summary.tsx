@@ -50,9 +50,9 @@ export function Step4Summary({ onStepClick }: Step4SummaryProps) {
                         <p className="text-grey-500">No add-ons selected</p>
                     ) : null}
                     {addOns.map((addOn) => (
-                        <p className="flex justify-between items-center" key={addOn.id}>
+                        <p className="flex justify-between items-center gap-4" key={addOn.id}>
                             <span className="text-grey-500">{addOn.name}</span>
-                            <span className="text-blue-950">
+                            <span className="text-blue-950 text-nowrap">
                                 +${addOn.priceCents[billing]}/{DATE_VALUE[billing]}
                             </span>
                         </p>
@@ -60,7 +60,7 @@ export function Step4Summary({ onStepClick }: Step4SummaryProps) {
                 </div>
                 <p className="flex justify-between items-center">
                     <span className="text-grey-500">Total (per {transformAdverbToNoun(billing)})</span>
-                    <span className="text-purple-600 font-bold text-lg">
+                    <span className="text-purple-600 font-bold text-lg text-nowrap">
                         ${totalPrice}/{DATE_VALUE[billing]}
                     </span>
                 </p>
