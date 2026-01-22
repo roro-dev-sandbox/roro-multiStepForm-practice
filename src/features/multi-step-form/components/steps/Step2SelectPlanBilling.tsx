@@ -16,7 +16,7 @@ export function Step2SelectPlanBilling({ billing, isYearly }: Step2SelectPlanBil
     }
 
     return (
-        <div className="flex justify-center items-center gap-6 p-2 bg-gray-50 rounded-md">
+        <div className="flex justify-center items-center gap-6 p-2 bg-gray-50 rounded-md font-medium">
             <span className={!isYearly ? "text-blue-950" : "text-grey-500"}>Monthly</span>
             <label className="inline-flex items-center cursor-pointer">
                 <input type="checkbox" value="" className="sr-only peer" onChange={onChangeBilling} checked={billing === "yearly"} />

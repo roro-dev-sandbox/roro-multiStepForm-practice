@@ -6,6 +6,7 @@ import {
     findAddOns,
     findPlan,
     firstWordUpperCase,
+    transformAdverbToNoun,
 } from "../../helpers/formCalculationStep";
 import { ADDONS, DATE_VALUE, PLANS } from "../../constants/valuesSteps";
 import type { FormStep } from "../../types/form.types";
@@ -30,8 +31,8 @@ export function Step4Summary({ onStepClick }: Step4SummaryProps) {
                 title="Finishing up"
                 description="Double-check everything looks OK before confirming."
             />
-            <div className="p-7 space-y-6">
-                <div className="flex justify-between items-center">
+            <div className="p-6 space-y-6 bg-gray-50 rounded-lg">
+                <div className="flex justify-between items-center border-b border-gray-200 pb-4 mb-4">
                     <div>
                         <h2 className="text-blue-950 font-medium">
                             {plan?.name}({firstWordUpperCase(billing)})
@@ -58,9 +59,9 @@ export function Step4Summary({ onStepClick }: Step4SummaryProps) {
                     ))}
                 </div>
                 <p className="flex justify-between items-center">
-                    <span className="text-grey-500">Total (per {billing})</span>
+                    <span className="text-grey-500">Total (per {transformAdverbToNoun(billing)})</span>
                     <span className="text-purple-600 font-bold text-lg">
-                        +${totalPrice}/{DATE_VALUE[billing]}
+                        ${totalPrice}/{DATE_VALUE[billing]}
                     </span>
                 </p>
             </div>

@@ -28,9 +28,9 @@ export function Step2SelectPlanItem({
             name="planId"
             value={id}
         >
-            <img className="size-12" src={img} alt={name} />
+            <img className="size-11" src={img} alt={name} />
             <div className="mb-0">
-                <h1 className="text-blue-950 font-medium">{name}</h1>
+                <h1 className="text-blue-950 font-bold">{name}</h1>
                 <p className="text-grey-500">${priceCents[billing]}/{DATE_VALUE[billing]}</p>
                 {billing === "yearly" && <p className="text-blue-950">{description}</p>}
             </div>
