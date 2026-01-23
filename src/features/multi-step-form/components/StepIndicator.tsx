@@ -1,5 +1,5 @@
 import { type FormStep } from "../types/form.types";
-import StepIndicatorItem from "./StepIndicatorItem";
+import { StepIndicatorItem } from "./StepIndicatorItem";
 import imgSidebarMobile from "../../../assets/images/bg-sidebar-mobile.svg";
 import imgSidebarDesktop from "../../../assets/images/bg-sidebar-desktop.svg";
 

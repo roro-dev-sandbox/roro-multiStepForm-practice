@@ -2,7 +2,7 @@ import { ControllerInputCustom } from "@/components/ui/form/ControllerInputCusto
 import type { FormSchemaInput, FormSchemaOutput } from "../../schemas/formSchema";
 import type { AddOn, Billing } from "../../types/form.types";
 import { useFormContext } from "react-hook-form";
-import { verifyAddOnSelected } from "../../helpers/formCalculationStep";
+import { verifyAddOnSelected } from "../../helpers/formHelpers";
 import { DATE_VALUE } from "../../constants/valuesSteps";
 import iconCheckMark from "@/assets/images/icon-checkmark.svg";
 

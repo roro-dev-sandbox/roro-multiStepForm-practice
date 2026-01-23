@@ -15,12 +15,12 @@ const STEPS: StepType = {
   4: Step4Summary,
 };
 
-interface FormFieldProps {
+interface StepRendererProps {
   currentStep: FormStep;
   onStepClick?: (step: FormStep) => void;
 }
 
-export function FormField({ currentStep, onStepClick }: FormFieldProps) {
+export function StepRenderer({ currentStep, onStepClick }: StepRendererProps) {
   const StepComponent = STEPS[currentStep];
   return (<StepComponent onStepClick={onStepClick} />);
 }

@@ -7,7 +7,7 @@ import {
     findPlan,
     firstWordUpperCase,
     transformAdverbToNoun,
-} from "../../helpers/formCalculationStep";
+} from "../../helpers/formHelpers";
 import { ADDONS, DATE_VALUE, PLANS } from "../../constants/valuesSteps";
 import type { FormStep } from "../../types/form.types";
 

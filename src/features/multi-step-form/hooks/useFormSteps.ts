@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { type FormStep } from "../types/form.types";
 
+const MAX_STEP = 4;
+const MIN_STEP = 1;
+
 export const useFormSteps = (initialStep: FormStep = 1) => {
     const [currentStep, setCurrentStep] = useState<FormStep>(initialStep);
 
     const nextStep = () => {
-        setCurrentStep((prev) => Math.min(prev + 1, 4) as FormStep);
+        setCurrentStep((prev) => Math.min(prev + 1, MAX_STEP) as FormStep);
     };
 
     const prevStep = () => {
-        setCurrentStep((prev) => Math.max(prev - 1, 1) as FormStep);
+        setCurrentStep((prev) => Math.max(prev - 1, MIN_STEP) as FormStep);
     };
 
     const goToStep = (step: FormStep) => {
@@ -21,7 +24,7 @@ export const useFormSteps = (initialStep: FormStep = 1) => {
         nextStep,
         prevStep,
         goToStep,
-        isFirstStep: currentStep === 1,
-        isLastStep: currentStep === 4,
+        isFirstStep: currentStep === MIN_STEP,
+        isLastStep: currentStep === MAX_STEP,
     };
 };

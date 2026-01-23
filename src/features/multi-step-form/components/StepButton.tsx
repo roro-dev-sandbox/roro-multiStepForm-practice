@@ -2,6 +2,18 @@ import { useFormContext } from "react-hook-form";
 import type { FormSchemaInput, FormSchemaOutput } from "../schemas/formSchema";
 import { Button } from "@/components/ui/Button";
 
+type StepFieldsMap = {
+    [key: number]: readonly string[];
+};
+
+const STEP_FIELDS = {
+    1: ["personal.name", "personal.email", "personal.phone"],
+    2: ["planId", "billing"],
+    3: ["addOnIds"],
+} as const satisfies StepFieldsMap;
+
+type StepFieldsKey = keyof typeof STEP_FIELDS;
+
 interface StepButtonProps {
     currentStep: number;
     nextStep: () => void;
@@ -22,22 +34,11 @@ export function StepButton({
     const { handleSubmit, trigger } = useFormContext<FormSchemaInput, any, FormSchemaOutput>();
 
     const handleNext = async () => {
-        let isValid = false;
-
-        switch (currentStep) {
-            case 1:
-                isValid = await trigger(["personal.name", "personal.email", "personal.phone"]);
-                break;
-            case 2:
-                isValid = await trigger(["planId", "billing"]);
-                break;
-            case 3:
-                isValid = await trigger(["addOnIds"]);
-                break;
-            case 4:
-                handleSubmit(onSubmit)();
-                return;
+        if (isLastStep) {
+            handleSubmit(onSubmit)();
+            return;
         }
+        const isValid = await trigger(STEP_FIELDS[currentStep as StepFieldsKey]);
 
         if (isValid) {
             nextStep();
@@ -55,11 +56,11 @@ export function StepButton({
             className={`bg-white w-full fixed bottom-0 left-0 sm:static p-4 sm:p-0 flex items-center ${!isFirstStep ? "justify-between" : "justify-end"}`}
         >
             {!isFirstStep && (
-                <Button type="button" variant="secondary" onClick={handleBack}>
+                <Button type="button" variant="secondary" onClick={handleBack} ariaLabel={`Go Back to Step ${currentStep - 1}`}>
                     Go Back
                 </Button>
             )}
-            <Button type="button" onClick={handleNext}>
+            <Button type="button" onClick={handleNext} ariaLabel={isLastStep ? "Submit Form" : `Go to Step ${currentStep + 1}`}>
                 {isLastStep ? "Confirm" : "Next Step"}
             </Button>
         </div>

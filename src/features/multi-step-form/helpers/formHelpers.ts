@@ -5,7 +5,6 @@ export const firstWordUpperCase = (str: string) =>
 
 export const transformAdverbToNoun = (str: string) => str.replace(/ly$/, "");
 
-
 export const findPlan = (plans: PlanOption[], id: PlanId) =>
     plans.find((p) => p.id === id) ?? null;
 
@@ -18,11 +17,7 @@ export const findAddOns = (addons: AddOn[], ids: string[]) =>
 export const verifyAddOnSelected = (addons: string[], id: string) =>
     addons.includes(id);
 
-export const calculateTotalPrice = (
-    plan: PlanOption,
-    addOns: AddOn[],
-    billing: Billing
-): number => {
+export const calculateTotalPrice = (plan: PlanOption, addOns: AddOn[], billing: Billing): number => {
     const addOnsTotal = addOns.reduce(
         (total, addOn) => total + addOn.priceCents[billing],
         0,

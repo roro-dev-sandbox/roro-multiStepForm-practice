@@ -1,17 +1,10 @@
 import { FormProvider, useForm } from "react-hook-form";
-import {
-  formSchema,
-  type FormSchemaInput,
-  type FormSchemaOutput,
-} from "./schemas/formSchema";
+import { formSchema, type FormSchemaInput, type FormSchemaOutput } from "./schemas/formSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormField } from "./components/FormField";
 import { useFormSteps } from "./hooks/useFormSteps";
-import { StepIndicator } from "./components/StepIndicator";
-import { StepButton } from "./components/StepButton";
 import { formInitialState } from "./types/form.types";
 import { useState } from "react";
-import { SuccessMessage } from "./components/SuccessMessage";
+import { StepIndicator, StepRenderer, StepButton, SuccessMessage } from "./components";
 
 export const MultiStepForm = () => {
   const form = useForm<FormSchemaInput, any, FormSchemaOutput>({
@@ -36,7 +29,7 @@ export const MultiStepForm = () => {
             <SuccessMessage />
           ) : (
             <>
-              <FormField currentStep={currentStep} onStepClick={goToStep} />
+              <StepRenderer currentStep={currentStep} onStepClick={goToStep} />
               <StepButton
                 currentStep={currentStep}
                 nextStep={nextStep}

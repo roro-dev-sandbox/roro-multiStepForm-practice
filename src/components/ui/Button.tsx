@@ -9,15 +9,16 @@ type ButtonType = ComponentProps<"button">["type"];
 
 interface ButtonProps {
     variant?: "primary" | "secondary";
+    ariaLabel?: string;
     type: ButtonType;
     className?: string;
     children: React.ReactNode;
     onClick?: () => void;
 }
 
-export function Button({ variant = "primary", className = "", children, onClick }: ButtonProps) {
+export function Button({ variant = "primary", type, ariaLabel, className = "", children, onClick }: ButtonProps) {
     return (
-        <button className={`${BUTTON_STYLES[variant]} ${className}`} onClick={onClick}>
+        <button type={type} aria-label={ariaLabel} className={`${BUTTON_STYLES[variant]} ${className}`} onClick={onClick}>
             {children}
         </button>
     );

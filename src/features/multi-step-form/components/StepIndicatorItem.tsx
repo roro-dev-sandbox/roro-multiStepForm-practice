@@ -5,12 +5,7 @@ interface StepIndicatorItemProps {
     onClick?: () => void;
 }
 
-const StepIndicatorItem = ({
-    step,
-    title,
-    isActive,
-    onClick,
-}: StepIndicatorItemProps) => {
+export function StepIndicatorItem({ step, title, isActive, onClick, }: StepIndicatorItemProps) {
     return (
         <div
             className={`flex sm:flex-row items-center gap-4 h-max ${onClick ? "cursor-pointer" : ""}`}
@@ -18,8 +13,8 @@ const StepIndicatorItem = ({
         >
             <div
                 className={`px-3 py-1 rounded-full font-bold border ${isActive
-                        ? "bg-blue-200 text-blue-950 border-blue-200"
-                        : "bg-transparent text-white border-white"
+                    ? "bg-blue-200 text-blue-950 border-blue-200"
+                    : "bg-transparent text-white border-white"
                     }`}
             >
                 {step}
@@ -34,6 +29,5 @@ const StepIndicatorItem = ({
             </div>
         </div>
     );
-};
+}
 
-export default StepIndicatorItem;

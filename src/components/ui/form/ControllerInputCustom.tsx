@@ -39,10 +39,12 @@ export function ControllerInputCustom<T extends FieldValues, TT>({
         field.onChange(newValue);
     };
 
+    const isCheckbox: boolean = !!iconCheckbox && type === "checkbox";
+
     return (
         <label htmlFor={value} className={classNameLabel}>
             {children}
-            <div className="h-5 relative">
+            <div className={`relative h-5 ${isCheckbox ? "block" : "hidden"}`}>
                 <input
                     {...field}
                     id={value}
@@ -54,7 +56,7 @@ export function ControllerInputCustom<T extends FieldValues, TT>({
                         isArray ? field.value.includes(value) : field.value === value
                     }
                 />
-                {iconCheckbox && type === "checkbox" && (
+                {isCheckbox && (
                     <img className=" absolute inset-0 m-auto  hidden peer-checked:block" src={iconCheckbox} alt="checkbox icon" />
                 )}
             </div>
